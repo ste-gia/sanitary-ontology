@@ -1,0 +1,310 @@
+@prefix : <http://fhgr.ch/voc/sanitary#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix san: <http://fhgr.ch/voc/sanitary#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@base <http://fhgr.ch/voc/sanitary> .
+
+<http://fhgr.ch/voc/sanitary> rdf:type owl:Ontology ;
+                               rdfs:comment "A basic OWL ontology for products of the sanitary industry" ;
+                               rdfs:label "Ontology for products of the sanitary industry" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:AnnotationProperty ;
+                    rdfs:label "owl:equivalentClass"@en .
+
+
+###  http://www.w3.org/2002/07/owl#equivalentProperty
+owl:equivalentProperty rdf:type owl:AnnotationProperty ;
+                       rdfs:label "owl:equivalentProperty"@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://fhgr.ch/voc/sanitary#ACCESSORY_FOR
+san:ACCESSORY_FOR rdf:type owl:ObjectProperty ;
+                  rdfs:domain san:Product ;
+                  rdfs:range san:Product ;
+                  rdfs:comment "Product is an accessory for another product"@en ;
+                  rdfs:label "ACCESSORY_FOR"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#COMPATIBLE_WITH
+san:COMPATIBLE_WITH rdf:type owl:ObjectProperty ;
+                    rdfs:domain san:Product ;
+                    rdfs:range san:Product ;
+                    rdfs:comment "Product is compatible with another product"@en ;
+                    rdfs:label "COMPATIBLE_WITH"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#COMPONENT_OF
+san:COMPONENT_OF rdf:type owl:ObjectProperty ;
+                 rdfs:domain san:Product ;
+                 rdfs:range san:Product ;
+                 rdfs:comment "Product is a component of another product"@en ;
+                 rdfs:label "COMPONENT_OF"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#HAS_A
+san:HAS_A rdf:type owl:ObjectProperty ;
+          owl:equivalentProperty schema:additionalProperty ;
+          rdfs:domain san:Product ;
+          rdfs:range san:Attribute ;
+          rdfs:comment "Product is described by an attribute"@en ;
+          rdfs:label "HAS_A"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#INCLUDED_IN
+san:INCLUDED_IN rdf:type owl:ObjectProperty ;
+                rdfs:domain san:Product ;
+                rdfs:range san:Product ;
+                rdfs:comment "Product is included in a packaging content, scope of delivery or set of another product"@en ;
+                rdfs:label "INCLUDED_IN"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#IS_A
+san:IS_A rdf:type owl:ObjectProperty ;
+         owl:equivalentProperty schema:additionalType ;
+         rdf:type owl:FunctionalProperty ;
+         rdfs:domain san:Product ;
+         rdfs:range san:ProductClass ;
+         rdfs:comment "Product is an instance of a product class"@en ;
+         rdfs:label "IS_A"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#MANUFACTURED_BY
+san:MANUFACTURED_BY rdf:type owl:ObjectProperty ;
+                    owl:equivalentProperty schema:manufacturer ;
+                    rdf:type owl:FunctionalProperty ;
+                    rdfs:domain san:Product ;
+                    rdfs:range san:Organization ;
+                    rdfs:comment "Product has a manufacturer"@en ;
+                    rdfs:label "MANUFACTURED_BY"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#PART_OF
+san:PART_OF rdf:type owl:ObjectProperty ;
+            rdfs:domain san:Product ;
+            rdfs:range san:Collection ;
+            rdfs:comment "Product is part of a collection"@en ;
+            rdfs:label "PART_OF"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#SPARE_PART_FOR
+san:SPARE_PART_FOR rdf:type owl:ObjectProperty ;
+                   rdfs:domain san:Product ;
+                   rdfs:range san:Product ;
+                   rdfs:comment "Product is a spare part for another product"@en ;
+                   rdfs:label "SPARE_PART_FOR"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#SUBSTITUTES
+san:SUBSTITUTES rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty schema:isSimilarTo ;
+                rdfs:domain san:Product ;
+                rdfs:range san:Product ;
+                rdfs:comment "Product substitutes another product"@en ;
+                rdfs:label "SUBSTITUTES"@en .
+
+
+###  http://schema.org/additionalProperty
+schema:additionalProperty rdf:type owl:ObjectProperty .
+
+
+###  http://schema.org/additionalType
+schema:additionalType rdf:type owl:ObjectProperty .
+
+
+###  http://schema.org/isSimilarTo
+schema:isSimilarTo rdf:type owl:ObjectProperty .
+
+
+###  http://schema.org/manufacturer
+schema:manufacturer rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://fhgr.ch/voc/sanitary#attribute_etim_id
+san:attribute_etim_id rdf:type owl:DatatypeProperty ;
+                      owl:equivalentProperty schema:propertyID ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain san:Attribute ;
+                      rdfs:range xsd:string .
+
+
+###  http://fhgr.ch/voc/sanitary#max_value
+san:max_value rdf:type owl:DatatypeProperty ;
+              owl:equivalentProperty schema:maxValue ;
+              rdf:type owl:FunctionalProperty ;
+              rdfs:domain san:Attribute ;
+              rdfs:range xsd:decimal .
+
+
+###  http://fhgr.ch/voc/sanitary#min_value
+san:min_value rdf:type owl:DatatypeProperty ;
+              owl:equivalentProperty schema:minValue ;
+              rdf:type owl:FunctionalProperty ;
+              rdfs:domain san:Attribute ;
+              rdfs:range xsd:decimal .
+
+
+###  http://fhgr.ch/voc/sanitary#name
+san:name rdf:type owl:DatatypeProperty ;
+         owl:equivalentProperty schema:name ;
+         rdfs:domain owl:Thing ;
+         rdfs:range xsd:string ;
+         rdfs:label "name"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#sku
+san:sku rdf:type owl:DatatypeProperty ;
+        owl:equivalentProperty schema:sku ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain san:Product ;
+        rdfs:range xsd:string .
+
+
+###  http://fhgr.ch/voc/sanitary#unit
+san:unit rdf:type owl:DatatypeProperty ;
+         owl:equivalentProperty schema:unitText ;
+         rdfs:domain san:Attribute ;
+         rdfs:range xsd:string .
+
+
+###  http://fhgr.ch/voc/sanitary#unit_etim_id
+san:unit_etim_id rdf:type owl:DatatypeProperty ;
+                 owl:equivalentProperty schema:unitCode ;
+                 rdf:type owl:FunctionalProperty ;
+                 rdfs:domain san:Attribute ;
+                 rdfs:range xsd:string .
+
+
+###  http://fhgr.ch/voc/sanitary#value
+san:value rdf:type owl:DatatypeProperty ;
+          owl:equivalentProperty schema:Value ;
+          rdfs:domain san:Attribute ;
+          rdfs:range xsd:boolean ,
+                     xsd:decimal ,
+                     xsd:string .
+
+
+###  http://fhgr.ch/voc/sanitary#value_etim_id
+san:value_etim_id rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain san:Attribute ;
+                  rdfs:range xsd:string .
+
+
+###  http://schema.org/Value
+schema:Value rdf:type owl:DatatypeProperty .
+
+
+###  http://schema.org/maxValue
+schema:maxValue rdf:type owl:DatatypeProperty .
+
+
+###  http://schema.org/minValue
+schema:minValue rdf:type owl:DatatypeProperty .
+
+
+###  http://schema.org/name
+schema:name rdf:type owl:DatatypeProperty .
+
+
+###  http://schema.org/propertyID
+schema:propertyID rdf:type owl:DatatypeProperty .
+
+
+###  http://schema.org/sku
+schema:sku rdf:type owl:DatatypeProperty .
+
+
+###  http://schema.org/unitCode
+schema:unitCode rdf:type owl:DatatypeProperty .
+
+
+###  http://schema.org/unitText
+schema:unitText rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://fhgr.ch/voc/sanitary#Attribute
+san:Attribute rdf:type owl:Class ;
+              owl:equivalentClass schema:PropertyValue ;
+              rdfs:subClassOf schema:StructuredValue ;
+              rdfs:comment "The value of a property of a product"@en ;
+              rdfs:label "Attribute"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#Collection
+san:Collection rdf:type owl:Class ;
+               owl:equivalentClass schema:Collection ;
+               rdfs:subClassOf schema:CreativeWork ;
+               rdfs:comment "The collection of several products having something in common"@en ;
+               rdfs:label "Collection"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#Organization
+san:Organization rdf:type owl:Class ;
+                 owl:equivalentClass schema:Organization ;
+                 rdfs:subClassOf owl:Thing ;
+                 rdfs:comment "The manufacturing organization of a product"@en ;
+                 rdfs:label "Organization"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#Product
+san:Product rdf:type owl:Class ;
+            owl:equivalentClass schema:Product ;
+            rdfs:subClassOf owl:Thing ;
+            rdfs:comment "A stock keeping product"@en ;
+            rdfs:label "Product"@en .
+
+
+###  http://fhgr.ch/voc/sanitary#ProductClass
+san:ProductClass rdf:type owl:Class ;
+                 rdfs:subClassOf schema:Intangible ;
+                 rdfs:comment "The class of products of the same type"@en ;
+                 rdfs:label "ProductClass"@en .
+
+
+###  http://schema.org/Collection
+schema:Collection rdf:type owl:Class .
+
+
+###  http://schema.org/CreativeWork
+schema:CreativeWork rdf:type owl:Class .
+
+
+###  http://schema.org/Intangible
+schema:Intangible rdf:type owl:Class .
+
+
+###  http://schema.org/Organization
+schema:Organization rdf:type owl:Class .
+
+
+###  http://schema.org/Product
+schema:Product rdf:type owl:Class .
+
+
+###  http://schema.org/PropertyValue
+schema:PropertyValue rdf:type owl:Class .
+
+
+###  http://schema.org/StructuredValue
+schema:StructuredValue rdf:type owl:Class .
